@@ -89,7 +89,21 @@ class PoseEngine {
 
     // 콜백 호출
     if (this.onPrediction) {
-      this.onPrediction(prediction, pose);
+      // 가장 높은 확률의 클래스 찾기
+      let maxProbability = 0;
+      let bestClass = "";
+
+      // prediction 배열이 있으면 처리
+      if (prediction && prediction.length > 0) {
+        for (let i = 0; i < prediction.length; i++) {
+          if (prediction[i].probability > maxProbability) {
+            maxProbability = prediction[i].probability;
+            bestClass = prediction[i].className;
+          }
+        }
+      }
+
+      this.onPrediction(prediction, pose, bestClass);
     }
 
     if (this.onDraw && pose) {
