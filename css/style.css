@@ -10,7 +10,8 @@ body {
   margin: 0;
   padding: 20px;
   gap: 16px;
-  background-color: #f0f8ff; /* 하늘색 배경 */
+  background-color: #f0f8ff;
+  /* 하늘색 배경 */
 }
 
 h1 {
@@ -41,7 +42,7 @@ button:hover {
 }
 
 button:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 button:disabled {
@@ -52,74 +53,100 @@ button:disabled {
 }
 
 .game-info {
-    display: flex;
-    gap: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+  display: flex;
+  gap: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .info-item span {
-    color: #e91e63;
+  color: #e91e63;
 }
 
-.canvas-container {
+/* 메인 컨테이너: 가로 배치 */
+.main-container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  /* 화면 작으면 줄바꿈 */
+}
+
+.view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.view-container h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: #555;
+  font-family: 'Jua', sans-serif;
+}
+
+.canvas-wrapper {
   position: relative;
   width: 400px;
   height: 400px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
 
 #canvas {
-  /* 웹캠 캔버스 */
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* 웹캠 캔버스 - 이제 별도 영역 */
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scaleX(-1); /* 거울 모드 */
-  opacity: 0.6; /* 게임 화면이 더 잘 보이도록 반투명 */
+  opacity: 1.0;
+  /* 불투명하게 */
 }
 
 #game-canvas {
-  /* 게임 오버레이 캔버스 */
+  /* 게임 캔버스 - 이제 별도 영역 */
   position: absolute;
+  /* overlay와 겹치기 위해 유지 */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 10;
+  background-color: #87CEEB;
+  /* 하늘색 배경 */
 }
 
 #game-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    z-index: 20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 20;
 }
 
 #message {
-    font-size: 48px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    display: none; /* JS에서 제어 */
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  display: none;
+  /* JS에서 제어 */
 }
 
 #label-container {
   display: flex;
-  flex-direction: row; /* 가로 배치 */
+  flex-direction: row;
+  /* 가로 배치 */
   gap: 8px;
   margin-top: 10px;
 }
@@ -130,6 +157,6 @@ button:disabled {
   border-radius: 20px;
   text-align: center;
   font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-weight: bold;
 }

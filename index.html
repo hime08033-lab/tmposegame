@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Teachable Machine Pose Model</title>
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <h1>Catch the Fruit</h1>
-    <div class="button-container">
-      <button type="button" id="startBtn" onclick="init()">Start Camera</button>
-      <button type="button" id="gameStartBtn" onclick="startGame()" disabled>Start Game</button>
-      <button type="button" id="stopBtn" onclick="stop()" disabled>Stop</button>
-    </div>
-    
-    <div class="game-info">
-        <div class="info-item">Score: <span id="score">0</span></div>
-        <div class="info-item">Time: <span id="time">60</span></div>
-        <div class="info-item">Level: <span id="level">1</span></div>
-    </div>
 
-    <div class="canvas-container">
-      <canvas id="canvas"></canvas>
-      <canvas id="game-canvas"></canvas>
-      <div id="game-overlay">
-        <div id="message">준비하세요!</div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Teachable Machine Pose Model</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <h1>Catch the Fruit</h1>
+  <div class="button-container">
+    <button type="button" id="startBtn" onclick="init()">Start Camera</button>
+    <button type="button" id="gameStartBtn" onclick="startGame()" disabled>Start Game</button>
+    <button type="button" id="stopBtn" onclick="stop()" disabled>Stop</button>
+  </div>
+
+  <div class="game-info">
+    <div class="info-item">Score: <span id="score">0</span></div>
+    <div class="info-item">Time: <span id="time">60</span></div>
+    <div class="info-item">Level: <span id="level">1</span></div>
+  </div>
+
+  <div class="main-container">
+    <div class="view-container">
+      <h2>Webcam</h2>
+      <div class="canvas-wrapper">
+        <canvas id="canvas"></canvas>
       </div>
     </div>
-    <div id="label-container"></div>
-    <script src="./js/main.js"></script>
-  </body>
+    <div class="view-container">
+      <h2>Game</h2>
+      <div class="canvas-wrapper">
+        <canvas id="game-canvas"></canvas>
+        <div id="game-overlay">
+          <div id="message">준비하세요!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="label-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+  <script src="./js/gameEngine.js"></script>
+  <script src="./js/poseEngine.js"></script>
+  <script src="./js/stabilizer.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
 </html>

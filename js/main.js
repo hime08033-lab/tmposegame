@@ -140,7 +140,7 @@ function handlePrediction(predictions, pose) {
 
   // 3. GameEngine에 포즈 전달
   if (gameEngine && gameEngine.isGameActive && stabilized.className) {
-    gameEngine.onPoseDetected(stabilized.className);
+    gameEngine.updatePose(stabilized.className);
   }
 }
 
@@ -155,8 +155,8 @@ function drawPose(pose) {
     // 키포인트와 스켈레톤 그리기
     if (pose) {
       const minPartConfidence = 0.5;
-      tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
-      tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+      // tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+      // tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
     }
   }
 }
